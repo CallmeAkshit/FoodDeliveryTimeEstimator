@@ -24,8 +24,8 @@ public class Driver {
 
         Gson g = new Gson();
         Scanner sc = new Scanner(System.in);
-        //String inputPath = args[0];
-        //File file = new File(inputPath);
+        String inputPath = args[0];
+        File file = new File(inputPath);
 
         Meal appetizer = SetDishService.setDish("A",17,1);
         Meal mainCourse = SetDishService.setDish("M",29,2);
@@ -36,8 +36,8 @@ public class Driver {
         Restaurant restaurant = SetRestaurantService.setRestaurant(100,7,8);
 
 
-        BufferedReader reader = new BufferedReader(new FileReader("/Users/akshitbansal/my-app/Input.txt"));
-        //BufferedReader reader = new BufferedReader(new FileReader(file));
+        //BufferedReader reader = new BufferedReader(new FileReader("/Users/akshitbansal/my-app/Input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(file));
 
         //taking user input in a string buffer
         StringBuilder sb = new StringBuilder();
@@ -95,7 +95,7 @@ public class Driver {
 
             Order order = new Order(orderId,itemQtyMapping,totalItems,distance);
 
-            //Verifies if the order can be prepared, if yes, then puts in the queue to prepare.
+            //Verifies if the order can be prepared, if yes, then puts in the queue to prepare and prints delivery time.
             PrepareVerifiedOrderService.createOrder(restaurant,order);
         }
 
